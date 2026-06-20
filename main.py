@@ -1,6 +1,13 @@
 # accessing the google sheets API
 import gspread
 
+# EVENT COORDINATOR INFO - Edit this to your own information 
+ec_first    =  John
+ec_last     =  Doe 
+ec_email    = jdoe@email.com 
+ec_psid     = 1234567 
+org         = SASE  # NEVER CHANGE THIS!!!
+
 # opening up the google sheets 
 gc = gspread.service_account()
 SPREADSHEET_NAME = "test_cullen"
