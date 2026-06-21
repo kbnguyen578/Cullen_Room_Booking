@@ -10,8 +10,10 @@ Automates filling out the UH Cullen College of Engineering room reservation form
 1. Clone this repo 
 
     (in terminal)
+    ```
     git clone https://github.com/kbnguyen578/Cullen_Room_Booking
     cd Cullen_Room_Booking 
+    ```
 
 2. Create and activate virtual environment 
 
@@ -32,7 +34,9 @@ Automates filling out the UH Cullen College of Engineering room reservation form
 3. Install dependencies 
 
     (in terminal)
+    ```
     pip install -r depedencies.txt 
+    ```
 
 4. Add your (Event Coordinator) credentials 
     - get the "service_acount.json" file from the current event coordinator 
