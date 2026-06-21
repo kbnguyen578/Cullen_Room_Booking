@@ -7,4 +7,5 @@ with open("config.json") as f:
 
 event_data = get_cullen_events()
 
-print(event_data[0])
+# testing to see if sheets.py function works -- it does! 
+# print(event_data[0])
