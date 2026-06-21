@@ -16,14 +16,18 @@ Automates filling out the UH Cullen College of Engineering room reservation form
 2. Create and activate virtual environment 
 
     (in terminal)
-    
+
     //  Mac
+    ```
     python3 -m venv venv 
     source venv/bin/activate 
+    ```
 
     // Windows 
+    ```
     python -m venv venv 
     venv\Scripts\activate
+    ```
 
 3. Install dependencies 
 
