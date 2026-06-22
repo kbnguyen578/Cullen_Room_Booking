@@ -47,8 +47,8 @@ def get_cullen_events(cutoff=None):
             continue 
         
         # event passed already--skip! 
-        # if event_date < today: 
-        #     continue 
+        if event_date < today: 
+            continue 
         
         if cutoff and event_date < cutoff: 
             continue 

@@ -13,7 +13,7 @@ def load_config():
         return json.load(f)
 
 def pick_cutoff(): 
-    date_input = input("Show events from what date to beyond? (MM/DD/YYYY) or press Enter for all upcoming: ").strip()
+    date_input = input("\nShow events from what date to beyond? (MM/DD/YYYY) or press Enter for all upcoming: ").strip()
     if date_input: 
         try:
             return datetime.strptime(date_input, "%m/%d/%Y")
