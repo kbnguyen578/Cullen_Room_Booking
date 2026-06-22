@@ -88,7 +88,7 @@ def fill_form(event_data, config):
 
     # field: Reservation Information 
     # event date | name="event_date"
-    driver.find_element(By.NAME, "event_date").send_keys(event_data['date'])
+    driver.find_element(By.NAME, "event_date").send_keys(event_data['date'].replace("/", ""))
     # print("filled date")
 
     # start time | name="start_time"

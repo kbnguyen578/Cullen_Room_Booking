@@ -1,5 +1,7 @@
 # accessing the google sheets API
 import gspread
+# for filtering events already passed/done 
+from datetime import datetime 
 
 # testing -- it works! 
 # print(sh.sheet1.get('C2'))
@@ -20,7 +22,7 @@ SPREADSHEET_NAME = "test_cullen"
 GSPREAD_CREDENTIALS_FILENAME = "service_account.json"
 
 
-def get_cullen_events(): 
+def get_cullen_events(cutoff=None): 
     # opening up the google sheets 
     gc = gspread.service_account(filename=GSPREAD_CREDENTIALS_FILENAME)
     sh = gc.open(SPREADSHEET_NAME)  # this is the ENTIRE wksh 
@@ -28,24 +30,42 @@ def get_cullen_events():
 
     # gets data for ALL events 
     all_rows = worksheet.get_all_values() 
+    today = datetime.today()
 
-    event_data = []
+    events = []
 
     #  retrieve data for only Cullen College forms, ignore the header row 
     for row in all_rows[1:]: 
-        if row[7] == TARGET_BUILDING: 
-            event_data.append({
-                "title":        row[2], 
-                "date":         row[3].replace("/", ""), 
-                "desc":         row[4],
-                "start_time":   row[5], 
-                "end_time":     row[6], 
-                "loc_1":        row[15], 
-                "loc_2":        row[16], 
-                "loc_3":        row[17]
-            })
+        # get only cullen building events 
+        if row[7] != TARGET_BUILDING:
+            continue 
+        
+        try: 
+            event_date = datetime.strptime(row[3], "%m/%d/%Y")
+            print (event_date)
+        except ValueError: 
+            continue 
+        
+        # event passed already--skip! 
+        # if event_date < today: 
+        #     continue 
+        
+        if cutoff and event_date < cutoff: 
+            continue 
+
+        
+        events.append({
+            "title":        row[2], 
+            "date":         row[3], 
+            "desc":         row[4],
+            "start_time":   row[5], 
+            "end_time":     row[6], 
+            "loc_1":        row[15], 
+            "loc_2":        row[16], 
+            "loc_3":        row[17]
+        })
     
-    return event_data
+    return events
 
 # test to see for loop works -- it does! 
 # print(event_data[0])
