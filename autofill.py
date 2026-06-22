@@ -8,6 +8,8 @@ from selenium.webdriver.support.ui import Select, WebDriverWait
 # ExpCond + WebDriverWait => until element visible/clickable 
 from selenium.webdriver.support import expected_conditions as ExpCond
 import time
+# Explicit Actions to click specific areas for stubborn/hidden fields (desc)
+from selenium.webdriver.common.action_chains import ActionChains
 
 # ==== for CHROME -- uncomment the section below & comment out Safari ====
 from webdriver_manager.chrome import ChromeDriverManager 
@@ -87,45 +89,53 @@ def fill_form(event_data, config):
     # field: Reservation Information 
     # event date | name="event_date"
     driver.find_element(By.NAME, "event_date").send_keys(event_data['date'])
-    print("filled date")
+    # print("filled date")
 
     # start time | name="start_time"
     driver.find_element(By.NAME, "start_time").send_keys(event_data['start_time'])
-    print("filled start time")
+    # print("filled start time")
 
     # end time | name="end_time"
     driver.find_element(By.NAME, "end_time").send_keys(event_data['end_time'])
-    print("filled end time")
+    # print("filled end time")
 
     # event title | name="event_title"
     driver.find_element(By.NAME, "event_title").send_keys(event_data['title'])
-    print("filled event_title")
+    # print("filled event_title")
 
     # number of attendees | name="number_of_attendees"
     driver.find_element(By.NAME, "number_of_attendees").send_keys(CAPACITY_MAP[event_data['loc_1']])
-    print("filled number of attendees")
+    # print("filled number of attendees")
 
     # locattion 1st choice | name="location1"
     dropdown_1 = driver.find_element(By.NAME, "location1")
     driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", dropdown_1)
     time.sleep(0.5)
     Select(dropdown_1).select_by_value(LOCATION_MAP[event_data['loc_1']])
-    print("filled location 1")
+    # print("filled location 1")
 
     # location 2nd choice | name="location2"
     Select(driver.find_element(By.NAME, "location2")).select_by_value(LOCATION_MAP[event_data['loc_2']])
-    print("filled location 2")
+    # print("filled location 2")
 
     # location 3rd choice | name="location3"
     Select(driver.find_element(By.NAME, "location3")).select_by_value(LOCATION_MAP[event_data['loc_3']])
-    print("filled location 3")
+    # print("filled location 3")
 
     # event description | name="description"
-    desc_box = driver.find_element(By.NAME, "description")
-    driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", desc_box)
+    # wait until the text-container loads in 
+    text_container = wait.until(
+        ExpCond.presence_of_element_located((By.CSS_SELECTOR, ".form-textarea-wrapper textarea"))
+    )
+    
+    # scroll to text container bc the browser is stubborn 
+    driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", text_container)
     time.sleep(0.5)
-    driver.execute_script("arguments[0].value = arguments[1];", desc_box, event_data['desc'])
-    print("filled description")
+    
+    # physically move mouse to and click desc box to fill out 
+    actions = ActionChains(driver)
+    actions.move_to_element(text_container).click().send_keys(event_data['desc']).perform()
+    # print("filled description")
 
     input("Press Enter here once you have submitted the form...")
 
