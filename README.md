@@ -2,6 +2,8 @@
 
 Automates filling out the UH Cullen College of Engineering room reservation form using data that officers provided from the SASE Room Booking Google Sheet. 
 
+# WARNING - SAFARI IS NOT READY YET 
+
 ## Requirements 
 - Python 
 - Safari or Chrome 
