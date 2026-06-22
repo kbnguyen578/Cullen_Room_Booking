@@ -36,7 +36,7 @@ def get_cullen_events():
         if row[7] == TARGET_BUILDING: 
             event_data.append({
                 "title":        row[2], 
-                "date":         row[3], 
+                "date":         row[3].replace("/", ""), 
                 "desc":         row[4],
                 "start_time":   row[5], 
                 "end_time":     row[6], 
