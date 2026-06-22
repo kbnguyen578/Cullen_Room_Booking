@@ -42,7 +42,7 @@ def get_cullen_events(cutoff=None):
         
         try: 
             event_date = datetime.strptime(row[3], "%m/%d/%Y")
-            print (event_date)
+            # print (event_date)
         except ValueError: 
             continue 
         

@@ -51,7 +51,7 @@ def pick_event(events):
 
 def main(): 
     print("================")
-    print("\nSASE Room Booker")
+    print("SASE Room Booker")
     print("================")
 
     config = load_config()
