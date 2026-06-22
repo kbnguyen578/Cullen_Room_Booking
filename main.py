@@ -29,6 +29,17 @@ def show_menu(events):
         print(f"    [{i}] {event['date']} - {event['title']}")
     print("\n===============================================")
 
+def pick_event(events): 
+    while True: 
+        try: 
+            choice = int(input("\nPick an event: "))
+            if 1 <= choice <= len(events): 
+                return events[choice-1]
+            else: 
+                print(f"Please enter a number between 1 and {len(events)}.")
+        except ValueError: 
+            print("Please enter a valid number.")
+
 
 
 # calling sheets.py to get the Cullen Event Data from google sheets 
@@ -39,14 +50,29 @@ def show_menu(events):
 # testing fill form 
 
 def main(): 
-    cutoff = pick_cutoff()
-    print(cutoff)
+    print("================")
+    print("\nSASE Room Booker")
+    print("================")
 
+    config = load_config()
+    cutoff = pick_cutoff()
     events = get_cullen_events(cutoff)
 
-    show_menu(events)
-    # config = load_config()
-    # fill_form(event_data[0], config)
+    if not events: 
+        print("\nNo upcoming events found for Cullen College of Engineering")
+        return 
+    
+    while True: 
+        show_menu(events)
+        event = pick_event(events)
+
+        print(f"\nOpening form for: {event['title']} on {event['date']}")
+        fill_form(event, config)
+
+        another = input("\nBook another event? (y/n): ").strip().lower()
+        if another != "y": 
+            print("\nDone! Goodbye!")
+            break
     
 if __name__ == "__main__": 
     main()
