@@ -18,17 +18,15 @@ from datetime import datetime
 # building_col = 'H'    | [7] (0-based)
 
 TARGET_BUILDING = "Cullen College of Engineering Building"
-SPREADSHEET_NAME = "test_cullen"
+SPREADSHEET_NAME = "26-27 Room Booking Form (Responses)"
 GSPREAD_CREDENTIALS_FILENAME = "service_account.json"
 
 
 def get_cullen_events(cutoff=None): 
     # opening up the google sheets 
-    print("In sheets.py")
     gc = gspread.service_account(filename=GSPREAD_CREDENTIALS_FILENAME)
     sh = gc.open(SPREADSHEET_NAME)  # this is the ENTIRE wksh 
     worksheet = sh.sheet1           # this is the specific tab we work with  
-    print("Opened Google Sheets successfully.")
 
     # gets data for ALL events 
     all_rows = worksheet.get_all_values() 
@@ -62,9 +60,9 @@ def get_cullen_events(cutoff=None):
             "desc":         row[4],
             "start_time":   row[5], 
             "end_time":     row[6], 
-            "loc_1":        row[15], 
-            "loc_2":        row[16], 
-            "loc_3":        row[17]
+            "loc_1":        row[14], 
+            "loc_2":        row[15], 
+            "loc_3":        row[16]
         })
     
     return events

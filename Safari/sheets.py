@@ -62,9 +62,9 @@ def get_cullen_events(cutoff=None):
             "desc":         row[4],
             "start_time":   row[5], 
             "end_time":     row[6], 
-            "loc_1":        row[15], 
-            "loc_2":        row[16], 
-            "loc_3":        row[17]
+            "loc_1":        row[14], 
+            "loc_2":        row[15], 
+            "loc_3":        row[16]
         })
     
     return events
