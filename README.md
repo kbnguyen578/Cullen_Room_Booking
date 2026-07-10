@@ -59,11 +59,11 @@ Automates filling out the UH Cullen College of Engineering room reservation form
     ```
         C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe
     ```
-    \\  Mac: 
+    \   Mac: 
     ```
         /Applications/Brave Browser.app/Contents/MacOS/Brave Browser
     ```
-    \\   Linux: 
+    \   Linux: 
     ```
         /usr/bin/brave-browser
     ```
