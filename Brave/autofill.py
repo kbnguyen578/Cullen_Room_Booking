@@ -11,9 +11,13 @@ import time
 # Explicit Actions to click specific areas for stubborn/hidden fields (desc)
 from selenium.webdriver.common.action_chains import ActionChains
 
-# ==== for CHROME -- uncomment the section below & comment out Safari ====
+# ==== for CHROME/BRAVE ====
 from webdriver_manager.chrome import ChromeDriverManager 
 from selenium.webdriver.chrome.service import Service 
+
+# ==== for BRAVE ====
+from selenium.webdriver.chrome.options import Options
+
 
 URL = "https://www.egr.uh.edu/forms/room-reservation-form"
 ORGANIZATION = "SASE"
@@ -40,7 +44,9 @@ CAPACITY_MAP = {
 
 def fill_form(event_data, config): 
     # ==== for CHROME ==== 
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    options = Options()
+    options.binary_location = config["brave_path"]
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
     # ==== for SAFARI -- follow instructions & uncomment line 18 & comment out Chrome ====
     # Safari > Settings > Advanced > "show features for web developers" 

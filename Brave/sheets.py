@@ -24,9 +24,11 @@ GSPREAD_CREDENTIALS_FILENAME = "service_account.json"
 
 def get_cullen_events(cutoff=None): 
     # opening up the google sheets 
+    print("In sheets.py")
     gc = gspread.service_account(filename=GSPREAD_CREDENTIALS_FILENAME)
     sh = gc.open(SPREADSHEET_NAME)  # this is the ENTIRE wksh 
     worksheet = sh.sheet1           # this is the specific tab we work with  
+    print("Opened Google Sheets successfully.")
 
     # gets data for ALL events 
     all_rows = worksheet.get_all_values() 
@@ -47,8 +49,8 @@ def get_cullen_events(cutoff=None):
             continue 
         
         # event passed already--skip! 
-        if event_date < today: 
-            continue 
+        # if event_date < today: 
+        #     continue 
         
         if cutoff and event_date < cutoff: 
             continue 

@@ -2,7 +2,7 @@
 
 Automates filling out the UH Cullen College of Engineering room reservation form using data that officers provided from the SASE Room Booking Google Sheet. 
 
-# WARNING - SAFARI IS NOT READY YET 
+⚠️ WARNING - SAFARI IS NOT READY YET ⚠️
 
 ## Requirements 
 - Python 
@@ -16,8 +16,29 @@ Automates filling out the UH Cullen College of Engineering room reservation form
     git clone https://github.com/kbnguyen578/Cullen_Room_Booking
     cd Cullen_Room_Booking 
     ```
+2. Delete the files that are NOT your browser file 
+    
+    Chome users should only have these files: 
+        - Chrome/ 
+            - autofill.py 
+            - main.py 
+        - template.config.json 
+        - sheets.py 
+        - service_account.json
+        - dependencies.txt 
 
-2. Create and activate virtual environment 
+    Safari users should only have these files: 
+        - Safari/ 
+            - autofill.py 
+            - main.py 
+        - template.config.json 
+        - sheets.py 
+        - service_account.json
+        - dependencies.txt 
+
+    etc. 
+
+3. Create and activate virtual environment 
 
     (in terminal)
 
@@ -33,17 +54,27 @@ Automates filling out the UH Cullen College of Engineering room reservation form
     venv\Scripts\activate
     ```
 
-3. Install dependencies 
+4. Install dependencies 
 
     (in terminal)
     ```
     pip install -r depedencies.txt 
     ```
 
-4. Add your (Event Coordinator) credentials 
+5. Add your (Event Coordinator) credentials 
     - get the "service_acount.json" file from the current event coordinator 
     - place it into project folder 
     - copy and fill out the config.template.json file and rename it to config.json 
+
+    Brave users need to add the browser path: 
+        Windows:
+        "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
+
+        Mac: 
+        "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
+
+        Linux: 
+        "/usr/bin/brave-browser"
 
 ## Usage 
 - "main.py"                 -- entry point, terminal menu 
