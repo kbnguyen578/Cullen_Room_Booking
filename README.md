@@ -54,18 +54,18 @@ Automates filling out the UH Cullen College of Engineering room reservation form
     - place it into project folder 
     - copy and fill out the config.template.json file and rename it to config.json 
 
-    Brave users need to add the browser path in config.json: 
+    Brave users need to add the browser path in config.json; add these between the "" :
+        Windows: 
     ```
-        Windows:
-        "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
+        C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe
     ```
+    \\  Mac: 
     ```
-        Mac: 
-        "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
+        /Applications/Brave Browser.app/Contents/MacOS/Brave Browser
     ```
+    \\   Linux: 
     ```
-        Linux: 
-        "/usr/bin/brave-browser"
+        /usr/bin/brave-browser
     ```
 
 ## Usage 
