@@ -2,7 +2,7 @@
 
 Automates filling out the UH Cullen College of Engineering room reservation form using data that officers provided from the SASE Room Booking Google Sheet. 
 
-⚠️ WARNING - SAFARI IS NOT READY YET ⚠️
+⚠️ WARNING - SAFARI IS NOT READY YET, BRAVE IN TESTING ⚠️
 
 ## Requirements 
 - Python 
@@ -18,25 +18,13 @@ Automates filling out the UH Cullen College of Engineering room reservation form
     ```
 2. Delete the files that are NOT your browser file 
     
-    Chome users should only have these files: 
-        - Chrome/ 
+    You should only have these files: 
+        - Browser_Name/ 
             - autofill.py 
             - main.py 
-        - template.config.json 
-        - sheets.py 
-        - service_account.json
-        - dependencies.txt 
-
-    Safari users should only have these files: 
-        - Safari/ 
-            - autofill.py 
-            - main.py 
-        - template.config.json 
-        - sheets.py 
-        - service_account.json
-        - dependencies.txt 
-
-    etc. 
+            - template.config.json 
+            - sheets.py 
+            - dependencies.txt 
 
 3. Create and activate virtual environment 
 
@@ -66,15 +54,19 @@ Automates filling out the UH Cullen College of Engineering room reservation form
     - place it into project folder 
     - copy and fill out the config.template.json file and rename it to config.json 
 
-    Brave users need to add the browser path: 
+    Brave users need to add the browser path in config.json: 
+    ```
         Windows:
         "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
-
+    ```
+    ```
         Mac: 
         "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
-
+    ```
+    ```
         Linux: 
         "/usr/bin/brave-browser"
+    ```
 
 ## Usage 
 - "main.py"                 -- entry point, terminal menu 
@@ -82,3 +74,5 @@ Automates filling out the UH Cullen College of Engineering room reservation form
 - "autofill.py"             -- fills the UH form using Selnium 
 - "config.json"             -- Event Coordinator's info 
 - "service_account.json"    -- Google Sheets Credentials (never release this anywhere)
+- venv/                     -- emulate every dependencies Event Coordinator needs to use program 
+- "dependencies.txt"        -- all the dependencies program uses & what venv needs to set up for Event Coordinator 
