@@ -18,7 +18,7 @@ from datetime import datetime
 # building_col = 'H'    | [7] (0-based)
 
 TARGET_BUILDING = "Cullen College of Engineering Building"
-SPREADSHEET_NAME = "test_cullen"
+SPREADSHEET_NAME = "26-27 Room Booking Form (Responses)"
 GSPREAD_CREDENTIALS_FILENAME = "service_account.json"
 
 
