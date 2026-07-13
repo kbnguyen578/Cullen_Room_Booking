@@ -18,15 +18,15 @@ from datetime import datetime
 # building_col = 'H'    | [7] (0-based)
 
 TARGET_BUILDING = "Cullen College of Engineering Building"
-SPREADSHEET_NAME = "26-27 Room Booking Form (Responses)"
+# SPREADSHEET_NAME = "26-27 Room Booking Form (Responses)"
 GSPREAD_CREDENTIALS_FILENAME = "service_account.json"
 
 
-def get_cullen_events(cutoff=None): 
+def get_cullen_events(gsheet_name, cutoff=None): 
     # opening up the google sheets 
     print("In sheets.py")
     gc = gspread.service_account(filename=GSPREAD_CREDENTIALS_FILENAME)
-    sh = gc.open(SPREADSHEET_NAME)  # this is the ENTIRE wksh 
+    sh = gc.open(gsheet_name)  # this is the ENTIRE wksh 
     worksheet = sh.sheet1           # this is the specific tab we work with  
     print("Opened Google Sheets successfully.")
 

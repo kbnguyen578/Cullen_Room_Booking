@@ -56,7 +56,7 @@ def main():
 
     config = load_config()
     cutoff = pick_cutoff()
-    events = get_cullen_events(cutoff)
+    events = get_cullen_events(config['gsheet_name'], cutoff)
 
     if not events: 
         print("\nNo upcoming events found for Cullen College of Engineering")

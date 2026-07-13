@@ -4,5 +4,6 @@
     "ec_email":         "input_email", 
     "ec_psid":          "input_psid", 
     "ec_phone_number":  "123-456-7890",
+    "gsheet_name":      "paste_gsheet_name_here",
     "brave_path":       "get_path_from_README"
 }
